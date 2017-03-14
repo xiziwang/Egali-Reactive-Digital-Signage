@@ -4,4 +4,4 @@
 
 1. run `make` to generate execusive files
 2. run `./main`
-3. run `make clean` to delete created execusive files and object files if you want to
+3. run `make clean` if you want to delete created execusive files and object files 
