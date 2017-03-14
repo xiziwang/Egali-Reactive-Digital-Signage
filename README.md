@@ -1,3 +1,3 @@
 # Egali-Reactive-Digital-Signage
 
-# Currently contains two small programs.
+(Currently contains two small programs)
