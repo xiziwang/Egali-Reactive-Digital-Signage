@@ -1,4 +1,4 @@
-CC=g++
+   CC=g++
 ARCH=-arch x86_64
 
 INCLUDE_FLAGS = -I/usr/local/include
