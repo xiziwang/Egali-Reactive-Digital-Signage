@@ -57,8 +57,8 @@ void DepthDetectorThread::run() {
 
     //Check the existence of Config.xml file
     //NOTE: this path might be changed
-    const char *fn = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/Config.xml";
-    // "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/Config.xml";
+    //const char *fn = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/Config.xml";
+    const char *fn = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/Config.xml";
 	ifstream fin(fn);
 	if(!fin) {
 		printf("Could not find '%s'. Aborting.\n" , fn);

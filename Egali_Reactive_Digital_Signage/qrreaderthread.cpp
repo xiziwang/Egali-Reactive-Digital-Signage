@@ -60,11 +60,6 @@ void QRReaderThread::run() {
                 // if no message passed, continue scanning
                 if(message.empty()) continue;
 
-                // change '/' to ' '
-                for (int i=0; i<message.length(); i++){
-                    if (message[i] == '/')
-                        message[i] = ' ';
-                }
                 // if message changed, send the signal
                 if (message.compare(m_message)!=0) {
                     m_message = message;
