@@ -17,7 +17,8 @@ EgaliSignage::EgaliSignage(QWidget *parent) :
     ui->setupUi(this);
 
     // NOTE: this path can be changed
-    currentPath = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
+    currentPath = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
+    //"/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
 
     //initialize label objects
     mainLabel = new QLabel(ui->image_main);
