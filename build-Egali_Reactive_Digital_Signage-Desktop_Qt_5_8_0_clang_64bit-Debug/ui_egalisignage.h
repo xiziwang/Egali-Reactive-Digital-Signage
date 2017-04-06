@@ -32,18 +32,18 @@ public:
     {
         if (EgaliSignage->objectName().isEmpty())
             EgaliSignage->setObjectName(QStringLiteral("EgaliSignage"));
-        EgaliSignage->resize(1024, 768);
+        EgaliSignage->resize(1920, 1080);
         centralWidget = new QWidget(EgaliSignage);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         image_main = new QLabel(centralWidget);
         image_main->setObjectName(QStringLiteral("image_main"));
-        image_main->setGeometry(QRect(0, 0, 700, 650));
+        image_main->setGeometry(QRect(0, 0, 1280, 900));
         image_guidance = new QLabel(centralWidget);
         image_guidance->setObjectName(QStringLiteral("image_guidance"));
-        image_guidance->setGeometry(QRect(0, 650, 700, 118));
+        image_guidance->setGeometry(QRect(0, 900, 1280, 180));
         image_secondary = new QLabel(centralWidget);
         image_secondary->setObjectName(QStringLiteral("image_secondary"));
-        image_secondary->setGeometry(QRect(700, 0, 324, 768));
+        image_secondary->setGeometry(QRect(1280, 0, 640, 1080));
         EgaliSignage->setCentralWidget(centralWidget);
 
         retranslateUi(EgaliSignage);

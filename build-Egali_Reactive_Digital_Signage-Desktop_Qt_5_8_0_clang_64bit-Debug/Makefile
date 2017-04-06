@@ -51,19 +51,19 @@ OBJECTS_DIR   = ./
 SOURCES       = ../Egali_Reactive_Digital_Signage/main.cpp \
 		../Egali_Reactive_Digital_Signage/egalisignage.cpp \
 		../Egali_Reactive_Digital_Signage/qrreaderthread.cpp \
-		../Egali_Reactive_Digital_Signage/depthdetectorthread.cpp moc_egalisignage.cpp \
+		../Egali_Reactive_Digital_Signage/depthdetectorthread.cpp qrc_resources.cpp \
+		moc_egalisignage.cpp \
 		moc_qrreaderthread.cpp \
 		moc_depthdetectorthread.cpp
 OBJECTS       = main.o \
 		egalisignage.o \
 		qrreaderthread.o \
 		depthdetectorthread.o \
+		qrc_resources.o \
 		moc_egalisignage.o \
 		moc_qrreaderthread.o \
 		moc_depthdetectorthread.o
-DIST          = ../Egali_Reactive_Digital_Signage/Config.xml \
-		../Egali_Reactive_Digital_Signage/NOTICE \
-		../Egali_Reactive_Digital_Signage/images/english/dys/guidance/0.jpg \
+DIST          = ../Egali_Reactive_Digital_Signage/images/english/dys/guidance/0.jpg \
 		../Egali_Reactive_Digital_Signage/images/english/dys/main/0.jpg \
 		../Egali_Reactive_Digital_Signage/images/english/dys/secondary/0.jpg \
 		../Egali_Reactive_Digital_Signage/images/english/std/guidance/0.jpg \
@@ -455,6 +455,7 @@ Makefile: ../Egali_Reactive_Digital_Signage/Egali_Reactive_Digital_Signage.pro .
 		../../../../Qt/5.8/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.8/clang_64/mkspecs/features/lex.prf \
 		../Egali_Reactive_Digital_Signage/Egali_Reactive_Digital_Signage.pro \
+		../Egali_Reactive_Digital_Signage/resources.qrc \
 		../../../../Qt/5.8/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		../../../../Qt/5.8/clang_64/lib/QtGui.framework/QtGui.prl \
 		../../../../Qt/5.8/clang_64/lib/QtCore.framework/QtCore.prl
@@ -637,6 +638,7 @@ Makefile: ../Egali_Reactive_Digital_Signage/Egali_Reactive_Digital_Signage.pro .
 ../../../../Qt/5.8/clang_64/mkspecs/features/yacc.prf:
 ../../../../Qt/5.8/clang_64/mkspecs/features/lex.prf:
 ../Egali_Reactive_Digital_Signage/Egali_Reactive_Digital_Signage.pro:
+../Egali_Reactive_Digital_Signage/resources.qrc:
 ../../../../Qt/5.8/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 ../../../../Qt/5.8/clang_64/lib/QtGui.framework/QtGui.prl:
 ../../../../Qt/5.8/clang_64/lib/QtCore.framework/QtCore.prl:
@@ -669,6 +671,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../Egali_Reactive_Digital_Signage/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Egali_Reactive_Digital_Signage/egalisignage.h ../Egali_Reactive_Digital_Signage/qrreaderthread.h ../Egali_Reactive_Digital_Signage/depthdetectorthread.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../Egali_Reactive_Digital_Signage/main.cpp ../Egali_Reactive_Digital_Signage/egalisignage.cpp ../Egali_Reactive_Digital_Signage/qrreaderthread.cpp ../Egali_Reactive_Digital_Signage/depthdetectorthread.cpp $(DISTDIR)/
@@ -696,8 +699,69 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: ../Egali_Reactive_Digital_Signage/resources.qrc \
+		../../../../Qt/5.8/clang_64/bin/rcc \
+		../Egali_Reactive_Digital_Signage/Config.xml \
+		../Egali_Reactive_Digital_Signage/NOTICE \
+		../Egali_Reactive_Digital_Signage/images/english/vis/secondary/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/vis/secondary/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/vis/secondary/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/vis/guidance/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/vis/guidance/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/vis/main/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/vis/main/0/2.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/vis/main/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/vis/main/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/dys/secondary/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/dys/secondary/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/dys/secondary/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/dys/guidance/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/dys/guidance/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/dys/main/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/dys/main/0/2.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/dys/main/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/dys/main/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/std/secondary/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/std/secondary/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/std/secondary/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/std/guidance/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/std/guidance/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/std/main/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/std/main/0/2.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/std/main/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/english/std/main/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/vis/secondary/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/vis/secondary/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/vis/secondary/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/vis/guidance/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/vis/guidance/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/vis/main/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/vis/main/0/2.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/vis/main/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/vis/main/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/dys/secondary/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/dys/secondary/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/dys/secondary/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/dys/guidance/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/dys/guidance/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/dys/main/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/dys/main/0/2.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/dys/main/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/dys/main/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/std/secondary/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/std/secondary/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/std/secondary/0/1.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/std/guidance/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/std/guidance/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/std/main/0/0.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/std/main/0/2.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/std/main/0/i.jpg \
+		../Egali_Reactive_Digital_Signage/images/russian/std/main/0/1.jpg
+	/Users/Lucy-Wang/Qt/5.8/clang_64/bin/rcc -name resources ../Egali_Reactive_Digital_Signage/resources.qrc -o qrc_resources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -797,7 +861,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1039,6 +1103,9 @@ depthdetectorthread.o: ../Egali_Reactive_Digital_Signage/depthdetectorthread.cpp
 		../../../../Qt/5.8/clang_64/lib/QtCore.framework/Headers/QThread \
 		../../../../Qt/5.8/clang_64/lib/QtCore.framework/Headers/qthread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o depthdetectorthread.o ../Egali_Reactive_Digital_Signage/depthdetectorthread.cpp
+
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 moc_egalisignage.o: moc_egalisignage.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_egalisignage.o moc_egalisignage.cpp
