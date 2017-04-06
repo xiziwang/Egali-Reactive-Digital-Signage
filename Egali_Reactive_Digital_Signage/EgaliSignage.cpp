@@ -6,7 +6,9 @@
 #include <string>
 #include<iostream>
 #include<sstream>
-#include <QDebug>
+#include<QKeyEvent>
+#include <QCoreApplication>
+#include<QDebug>
 
 using namespace std;
 
@@ -15,10 +17,7 @@ EgaliSignage::EgaliSignage(QWidget *parent) :
     ui(new Ui::EgaliSignage)
 {
     ui->setupUi(this);
-
-    // NOTE: this path can be changed
-    //currentPath = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
-    currentPath = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
+    installEventFilter(this);
 
     //initialize label objects
     mainLabel = new QLabel(ui->image_main);
@@ -70,9 +69,9 @@ void EgaliSignage::setReadingPreserence() {
     }
 
     //create pathes
-    QString mainLabelPath = this->currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "main" + "/" + message[2] + "/" + depth[0] + ".jpg");
-    QString secondaryLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "secondary" + "/" + message[2] + "/" + depth[1] + ".jpg");
-    QString guidanceLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "guidance" + "/" + message[2] + "/" + depth[2] + ".jpg");
+    QString mainLabelPath = ":/images" + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "main" + "/" + message[2] + "/" + depth[0] + ".jpg");
+    QString secondaryLabelPath = ":/images" + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "secondary" + "/" + message[2] + "/" + depth[1] + ".jpg");
+    QString guidanceLabelPath = ":/images" + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "guidance" + "/" + message[2] + "/" + depth[2] + ".jpg");
 
     //load images
     loadImage(mainLabelPath, mainLabel);
@@ -83,4 +82,15 @@ void EgaliSignage::setReadingPreserence() {
 EgaliSignage::~EgaliSignage()
 {
     delete ui;
+}
+
+void EgaliSignage::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+        qrThread.quit();
+        depthThread.quit();
+//        qApp->exit();
+//        qApp->quit();
+    }
 }

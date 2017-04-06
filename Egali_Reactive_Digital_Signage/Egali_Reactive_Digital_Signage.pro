@@ -22,6 +22,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+RESOURCES += resources.qrc
+
 SOURCES += main.cpp\
         egalisignage.cpp \
     qrreaderthread.cpp \
@@ -34,8 +36,6 @@ HEADERS  += egalisignage.h \
 FORMS    += egalisignage.ui
 
 DISTFILES += \
-    Config.xml \
-    NOTICE \
     images/english/dys/guidance/0.jpg \
     images/english/dys/main/0.jpg \
     images/english/dys/secondary/0.jpg \

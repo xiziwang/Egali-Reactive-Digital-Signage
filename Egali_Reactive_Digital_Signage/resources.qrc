@@ -1,0 +1,84 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>images/english/std/guidance/0/i.jpg</file>
+    <file>images/english/std/guidance/0/0.jpg</file>
+
+    <file>images/english/std/main/0/i.jpg</file>
+    <file>images/english/std/main/0/0.jpg</file>
+    <file>images/english/std/main/0/1.jpg</file>
+    <file>images/english/std/main/0/2.jpg</file>
+
+    <file>images/english/std/secondary/0/i.jpg</file>
+    <file>images/english/std/secondary/0/0.jpg</file>
+    <file>images/english/std/secondary/0/1.jpg</file>
+
+
+    <file>images/english/dys/guidance/0/i.jpg</file>
+    <file>images/english/dys/guidance/0/0.jpg</file>
+
+    <file>images/english/dys/main/0/i.jpg</file>
+    <file>images/english/dys/main/0/0.jpg</file>
+    <file>images/english/dys/main/0/1.jpg</file>
+    <file>images/english/dys/main/0/2.jpg</file>
+
+    <file>images/english/dys/secondary/0/i.jpg</file>
+    <file>images/english/dys/secondary/0/0.jpg</file>
+    <file>images/english/dys/secondary/0/1.jpg</file>
+
+
+    <file>images/english/vis/guidance/0/i.jpg</file>
+    <file>images/english/vis/guidance/0/0.jpg</file>
+
+    <file>images/english/vis/main/0/i.jpg</file>
+    <file>images/english/vis/main/0/0.jpg</file>
+    <file>images/english/vis/main/0/1.jpg</file>
+    <file>images/english/vis/main/0/2.jpg</file>
+
+    <file>images/english/vis/secondary/0/i.jpg</file>
+    <file>images/english/vis/secondary/0/0.jpg</file>
+    <file>images/english/vis/secondary/0/1.jpg</file>
+
+
+    <file>Config.xml</file>
+    <file>NOTICE</file>
+
+
+    <file>images/russian/std/guidance/0/i.jpg</file>
+    <file>images/russian/std/guidance/0/0.jpg</file>
+
+    <file>images/russian/std/main/0/i.jpg</file>
+    <file>images/russian/std/main/0/0.jpg</file>
+    <file>images/russian/std/main/0/1.jpg</file>
+    <file>images/russian/std/main/0/2.jpg</file>
+
+    <file>images/russian/std/secondary/0/i.jpg</file>
+    <file>images/russian/std/secondary/0/0.jpg</file>
+    <file>images/russian/std/secondary/0/1.jpg</file>
+
+
+    <file>images/russian/dys/guidance/0/i.jpg</file>
+    <file>images/russian/dys/guidance/0/0.jpg</file>
+
+    <file>images/russian/dys/main/0/i.jpg</file>
+    <file>images/russian/dys/main/0/0.jpg</file>
+    <file>images/russian/dys/main/0/1.jpg</file>
+    <file>images/russian/dys/main/0/2.jpg</file>
+
+    <file>images/russian/dys/secondary/0/i.jpg</file>
+    <file>images/russian/dys/secondary/0/0.jpg</file>
+    <file>images/russian/dys/secondary/0/1.jpg</file>
+
+
+    <file>images/russian/vis/guidance/0/i.jpg</file>
+    <file>images/russian/vis/guidance/0/0.jpg</file>
+
+    <file>images/russian/vis/main/0/i.jpg</file>
+    <file>images/russian/vis/main/0/0.jpg</file>
+    <file>images/russian/vis/main/0/1.jpg</file>
+    <file>images/russian/vis/main/0/2.jpg</file>
+
+    <file>images/russian/vis/secondary/0/i.jpg</file>
+    <file>images/russian/vis/secondary/0/0.jpg</file>
+    <file>images/russian/vis/secondary/0/1.jpg</file>
+</qresource>
+</RCC>

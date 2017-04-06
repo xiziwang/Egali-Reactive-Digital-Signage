@@ -26,6 +26,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <algorithm>
 #include "depthdetectorthread.h"
 
 using namespace xn;
@@ -46,7 +47,6 @@ DepthDetectorThread::~DepthDetectorThread() {
     wait();
 }
 
-/* This  detects . */
 void DepthDetectorThread::run() {
 
     XnStatus nRetVal = XN_STATUS_OK;
@@ -59,11 +59,11 @@ void DepthDetectorThread::run() {
     //NOTE: this path might be changed
     //const char *fn = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/Config.xml";
     const char *fn = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/Config.xml";
-	ifstream fin(fn);
-	if(!fin) {
-		printf("Could not find '%s'. Aborting.\n" , fn);
+    ifstream fin(fn);
+    if(!fin) {
+        printf("Could not find '%s'. Aborting.\n" , fn);
         cout << "Error: " << XN_STATUS_ERROR << endl;
-	}
+    }
 	printf("Reading config from: '%s'\n", fn);
 	
 	//Init from Config.xml
@@ -90,8 +90,8 @@ void DepthDetectorThread::run() {
 	nRetVal = context.FindExistingNode(XN_NODE_TYPE_DEPTH, depth);
 	CHECK_RC(nRetVal, "Find depth generator");
 
-	while (true)
-	{
+    while (true)
+    {
 		//Update and check status
 		nRetVal = context.WaitOneUpdateAll(depth);
 		if (nRetVal != XN_STATUS_OK)
@@ -102,7 +102,15 @@ void DepthDetectorThread::run() {
 
 		//Generate Meta Data
 		depth.GetMetaData(depthMD);
-		XnDepthPixel distance = depthMD(depthMD.XRes() / 2, depthMD.YRes() / 2);
+        XnDepthPixel centerX = depthMD.XRes()/2;
+
+        XnDepthPixel distance = (XnDepthPixel) 34463; // max depth
+        //Scan the x range [center-15,center+15]
+        for(XnDepthPixel i=centerX-15; i<=centerX+15;i= i+3) {
+            XnDepthPixel temp_d = depthMD(i, depthMD.YRes() / 2)==0?34463:depthMD(i, depthMD.YRes() / 2);
+            distance = min(temp_d,distance);
+        }
+        distance = distance==34463? 0:distance;
 
         string depth = depthGenerator(distance);
         // if distance changed, send the signal
@@ -121,7 +129,6 @@ void DepthDetectorThread::run() {
 string DepthDetectorThread::depthGenerator(XnDepthPixel distance) {
     string res = "";
     int d = (int) distance;
-
     // generate main container depth
     if (0 < d && d < 1000) res += "0";
     else if (1001 < d && d < 2000) res += "1";
