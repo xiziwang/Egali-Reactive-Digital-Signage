@@ -57,8 +57,8 @@ void DepthDetectorThread::run() {
 
     //Check the existence of Config.xml file
     //NOTE: this path might be changed
-    //const char *fn = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/Config.xml";
-    const char *fn = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/Config.xml";
+    const char *fn = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/Config.xml";
+    //const char *fn = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/Config.xml";
     ifstream fin(fn);
     if(!fin) {
         printf("Could not find '%s'. Aborting.\n" , fn);
@@ -129,22 +129,34 @@ void DepthDetectorThread::run() {
 string DepthDetectorThread::depthGenerator(XnDepthPixel distance) {
     string res = "";
     int d = (int) distance;
+
     // generate main container depth
-    if (0 < d && d < 1000) res += "0";
-    else if (1001 < d && d < 2000) res += "1";
-    else if (2001 < d && d < 3000) res += "2";
-    else res += "i";
-    res += " ";
+      if (0 < d && d < 700) res += "0";
+      else if (701 < d && d < 1000) res += "1";
+      else if (1001 < d && d < 2000) res += "2";
+      else if (2001 < d && d < 3000) res += "3";
+      else if (3001 < d && d < 4000) res += "4";
+      else res += "i";
+      res += " ";
 
-    // generate secondary container depth
-    if(0 < d && d < 1500) res += "0";
-    else if (1501 < d && d < 3000) res += "1";
-    else res += "i";
-    res += " ";
+      // generate secondary container depth
+      if(0 < d && d < 700) res += "0";
+      else if (701 < d && d < 1500) res += "1";
+      else if (1501 < d && d < 2500) res += "2";
+      else if (2501 < d && d < 3500) res += "3";
+      else res += "i";
+      res += " ";
 
-    // generate guidance container depth
-    if(0 < d && d < 1500) res += "0";
-    else res += "i";
+      // generate guidance container depth
+      if(0 < d && d < 700) res += "0";
+      else if (701 < d && d < 900) res += "1";
+      else if (901 < d && d < 1200) res += "2";
+      else if (1201 < d && d < 1600) res += "3";
+      else if (1601 < d && d < 2200) res += "4";
+      else if (2201 < d && d < 2800) res += "5";
+      else if (2801 < d && d < 3400) res += "6";
+      else if (3401 < d && d < 3800) res += "7";
+      else res += "i";
 
     return res;
 }

@@ -41,8 +41,7 @@ private:
     QLabel *mainLabel;
     QLabel *secondaryLabel;
     QLabel *guidanceLabel;
-protected:
-    void keyPressEvent(QKeyEvent *event);
+
 };
 
 #endif // EGALISIGNAGE_H

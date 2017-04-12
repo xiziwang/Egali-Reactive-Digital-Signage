@@ -24,6 +24,10 @@ EgaliSignage::EgaliSignage(QWidget *parent) :
     secondaryLabel = new QLabel(ui->image_secondary);
     guidanceLabel = new QLabel(ui->image_guidance);
 
+    // NOTE: this path can be changed
+        currentPath = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
+        //currentPath = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
+
     //set default images
     setReadingPreserence();
 
@@ -69,9 +73,9 @@ void EgaliSignage::setReadingPreserence() {
     }
 
     //create pathes
-    QString mainLabelPath = ":/images" + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "main" + "/" + message[2] + "/" + depth[0] + ".jpg");
-    QString secondaryLabelPath = ":/images" + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "secondary" + "/" + message[2] + "/" + depth[1] + ".jpg");
-    QString guidanceLabelPath = ":/images" + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "guidance" + "/" + message[2] + "/" + depth[2] + ".jpg");
+    QString mainLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "main" + "/" + message[2] + "/" + depth[0] + ".jpg");
+    QString secondaryLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "secondary" + "/" + message[2] + "/" + depth[1] + ".jpg");
+    QString guidanceLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "guidance" + "/" + message[2] + "/" + depth[2] + ".jpg");
 
     //load images
     loadImage(mainLabelPath, mainLabel);
@@ -82,15 +86,4 @@ void EgaliSignage::setReadingPreserence() {
 EgaliSignage::~EgaliSignage()
 {
     delete ui;
-}
-
-void EgaliSignage::keyPressEvent(QKeyEvent *event)
-{
-    if(event->key() == Qt::Key_Escape)
-    {
-        qrThread.quit();
-        depthThread.quit();
-//        qApp->exit();
-//        qApp->quit();
-    }
 }
