@@ -26,8 +26,8 @@ EgaliSignage::EgaliSignage(QWidget *parent) :
     guidanceLabel = new QLabel(ui->image_guidance);
 
     // NOTE: this path can be changed
-    //currentPath = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
-    currentPath = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
+    currentPath = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
+    //currentPath = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
     //currentPath = "/Users/karl/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
 
     //set default images
