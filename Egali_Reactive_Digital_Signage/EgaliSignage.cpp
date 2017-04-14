@@ -9,6 +9,7 @@
 #include<QKeyEvent>
 #include <QCoreApplication>
 #include<QDebug>
+#include<QMovie>
 
 using namespace std;
 
@@ -26,8 +27,8 @@ EgaliSignage::EgaliSignage(QWidget *parent) :
 
     // NOTE: this path can be changed
     //currentPath = "/Users/KZRL/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
-    //currentPath = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
-    currentPath = "/Users/karl/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
+    currentPath = "/Users/Lucy-Wang/Developer/Kinect/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
+    //currentPath = "/Users/karl/Egali-Reactive-Digital-Signage/Egali_Reactive_Digital_Signage/images";
 
     //set default images
     setReadingPreserence();
@@ -43,12 +44,18 @@ EgaliSignage::EgaliSignage(QWidget *parent) :
 
 /* This function load the image */
 bool EgaliSignage::loadImage(QString path, QLabel *label) {
-    //read image
-    QPixmap image(path);
-    //if no image found, return false
-    if (image.isNull()) {return false;}
-    //otherwise set image and return true
-    label->setPixmap(image);
+    QPixmap jpg_image(path+".jpg");
+    //if no jpg image is found, then search for the gif image
+    if (jpg_image.isNull()) {
+        QMovie *gif_image = new QMovie(path+".gif");
+        //set gif image
+        label->setMovie(gif_image);
+        gif_image->start();
+    } else {
+        //set jpg image
+        label->setMovie(NULL);
+        label->setPixmap(jpg_image);
+    }
     return true;
 }
 
@@ -74,9 +81,9 @@ void EgaliSignage::setReadingPreserence() {
     }
 
     //create pathes
-    QString mainLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "main" + "/" + message[2] + "/" + depth[0] + ".jpg");
-    QString secondaryLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "secondary" + "/" + message[2] + "/" + depth[1] + ".jpg");
-    QString guidanceLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "guidance" + "/" + message[2] + "/" + depth[2] + ".jpg");
+    QString mainLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "main" + "/" + message[2] + "/" + depth[0]);
+    QString secondaryLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "secondary" + "/" + message[2] + "/" + depth[1]);
+    QString guidanceLabelPath = currentPath + QString::fromStdString("/"+ message[0] + "/" + message[1] + "/" + "guidance" + "/" + message[2] + "/" + depth[2]);
 
     //load images
     loadImage(mainLabelPath, mainLabel);
